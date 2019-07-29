@@ -17,7 +17,7 @@ namespace DI.Modules
             var optionsBuilder = new DbContextOptionsBuilder<MyContext>();
             optionsBuilder.UseSqlServer(ConfigurationManager.ConnectionStrings["MyContext"].ConnectionString);
 
-            //using (var context = new MyContext(optionsBuilder.Options)) context.Database.EnsureCreated();
+            using (var context = new MyContext(optionsBuilder.Options)) context.Database.EnsureCreated();
 
             container.RegisterType<MyContext>(new HierarchicalLifetimeManager(), new InjectionConstructor(optionsBuilder.Options));
             container.RegisterType<IUserRepository, UserServiceRepository>(new ContainerControlledLifetimeManager());
