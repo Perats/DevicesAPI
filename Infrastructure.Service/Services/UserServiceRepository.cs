@@ -19,29 +19,32 @@ namespace Infrastructure.Service.Services
 
         public List<User> GetUsers()
         {
-            return new List<User>();
-           // return _context.Users.All().ToList();
+           return _context.Users.ToList();
         }
         public List<Device> GetDevices(int userId)
         {
-            //var res = _context.devices.FindAll(_ => _.UserId == userId);
-            return new List<Device>();
+            var devices = _context.Device.ToList();
+            var res = devices.FindAll(_ => _.UserId == userId);
+            return res;
         }
         public void AddNewDevice(Device device, int userId)
         {
-            //var user = users.FirstOrDefault(_ => _.Id == userId);
-            //if (user != null) user.Device = new Device
-            //{
-            //    Type = device.Type,
-            //    Name = device.Name,
-            //    Number = device.Number,
-            //    UserId = user.Id
-            //};
+            var user = _context.Users.FirstOrDefault(_ => _.Id == userId);
+            if (user != null)
+            {
+                user.Device = new Device
+                {
+                    Type = device.Type,
+                    Name = device.Name,
+                    Number = device.Number,
+                    UserId = user.Id
+                };
+            }
         }
         public void DeleteDevice(int userId, int deviceId)
         {
             //more deviceds for 1 user
-            //var itemToDelete = devices.Where(x => x.UserId == userId).Select(x => x).First();
+            //var itemToDelete = _context.Device.Where(x => x.UserId == userId).Select(x => x).First();
             //devices.Remove(itemToDelete);
         }
 

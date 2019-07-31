@@ -11,6 +11,7 @@ namespace Infrastructure.Service.Contexts
         }
 
         public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<Device> Device { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder) =>
             base.OnModelCreating(modelBuilder
