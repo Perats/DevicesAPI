@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using DevicesAPI.Validators;
+using FluentValidation.Attributes;
 
 namespace DevicesAPI.Models
 {
+    [Validator(typeof(UserValidator))]
     public class UserViewModel
     {
         public int Id { get; set; }

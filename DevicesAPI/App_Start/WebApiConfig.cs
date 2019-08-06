@@ -1,6 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using DevicesAPI.Filters;
+using FluentValidation.WebApi;
 using System.Web.Http;
 
 namespace DevicesAPI
@@ -9,9 +8,11 @@ namespace DevicesAPI
     {
         public static void Register(HttpConfiguration config)
         {
-            // Web API configuration and services
+            config.Filters.Add(new ActionFilter());
+            config.Filters.Add(new ExeptionFilter());
 
-            // Web API routes
+            FluentValidationModelValidatorProvider.Configure(config);
+
             config.MapHttpAttributeRoutes();
 
             config.Routes.MapHttpRoute(

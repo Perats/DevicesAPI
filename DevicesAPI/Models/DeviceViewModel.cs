@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using DevicesAPI.Validators;
+using FluentValidation.Attributes;
 
 namespace DevicesAPI.Models
 {
+    [Validator(typeof(DeviceValidator))]
     public class DeviceViewModel
     {
         public string Name { get; set; }
