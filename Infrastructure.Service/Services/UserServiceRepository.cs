@@ -43,9 +43,12 @@ namespace Infrastructure.Service.Services
         }
         public void DeleteDevice(int userId, int deviceId)
         {
-            //more deviceds for 1 user
-            //var itemToDelete = _context.Device.Where(x => x.UserId == userId).Select(x => x).First();
-            //devices.Remove(itemToDelete);
+            var itemToDelete = _context.Device.Where(_ => _.Id == deviceId).FirstOrDefault();
+            if (itemToDelete != null)
+            {
+                _context.Device.Remove(itemToDelete);
+                _context.SaveChanges();
+            }
         }
 
         public User GetUser(int userId)
