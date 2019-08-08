@@ -10,7 +10,6 @@ using System.Web.Http.Description;
 namespace DevicesAPI.Controllers
 {
     [Route("users")]
-   // [ExeptionFilter, ExeptionFilter]
     public class UserController : ApiController
     {
         public readonly IUserInterface _userService;
